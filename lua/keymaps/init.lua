@@ -1,0 +1,7 @@
+require("keymaps.general")
+require("keymaps.lsp")
+require("keymaps.telescope")
+require("keymaps.competitest")
+require("keymaps.codeforces")
+require("keymaps.dap")
+require("keymaps.snippets")
