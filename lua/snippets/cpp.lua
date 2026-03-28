@@ -58,6 +58,7 @@ local triggers = {
   "call_lca",
   "call_seg",
   "call_bit",
+  "call_press",
 }
 
 local result = {}
