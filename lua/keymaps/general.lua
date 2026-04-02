@@ -53,9 +53,6 @@ map("v", "<C-x>", '"+d',           { desc = "Cut" })
 map("n", "<A-Up>",   ":m .-2<CR>==", { silent = true, desc = "Move the line up" })
 map("n", "<A-Down>", ":m .+1<CR>==", { silent = true, desc = "Move the line down" })
 
-map("n", "i", "a", { desc = "Insert from right" })
-map("n", "a", "i", { desc = "Insert from left" })
-
 map("n", "<leader>k", ":WhichKey<CR>", { silent = true, desc = "Show keyboard shortcuts." })
 
 map("n", "<leader>t", ":botright vsplit | terminal<CR>", { silent = true, desc = "Terminal aç" })

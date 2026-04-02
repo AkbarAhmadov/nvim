@@ -24,8 +24,19 @@ return {
           hover     = { enabled = true },
           signature = { enabled = true },
         },
+        presets = {
+          long_message_to_split = true,
+        },
+        routes = {
+          {
+            filter = { event = "msg_show", kind = "search_count" },
+            opts   = { skip = true },
+          },
+        },
+        override = {
+          ["vim.ui.input"] = false,
+        },
       })
-
       vim.api.nvim_set_hl(0, "NotifyBorder",      { fg = "#5c6370", bold = true })
       vim.api.nvim_set_hl(0, "NotifyERRORBorder",  { fg = "#5c6370", bold = true })
       vim.api.nvim_set_hl(0, "NotifyWARNBorder",   { fg = "#5c6370", bold = true })
@@ -35,11 +46,10 @@ return {
       vim.api.nvim_set_hl(0, "NotifyERRORBody",    { bg = "NONE" })
       vim.api.nvim_set_hl(0, "NotifyWARNBody",     { bg = "NONE" })
       vim.api.nvim_set_hl(0, "NotifyINFOBody",     { bg = "NONE" })
-
       require("notify").setup({
         background_colour = "NONE",
         position = "top_right",
-        timeout = 2000,
+        timeout = 3000,
         render = "wrapped-compact",
         stages = "static",
         fps = 60,
