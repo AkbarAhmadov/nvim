@@ -34,7 +34,7 @@ struct SegTree{
         T res = merge(resL, resR);
         return res;
     }
-    void update(int v, int tl, int tr, int i, int x) {
+    void update(int v, int tl, int tr, int i, T x) {
         if (tl == tr) {
             t[v] = x;
             return;
@@ -47,7 +47,7 @@ struct SegTree{
     T get(int l, int r) {
         return find(1, 0, n-1, l, r);
     }
-    void upd(int i, int x) {
+    void upd(int i, T x) {
         update(1, 0, n-1, i, x);
     }
 };
