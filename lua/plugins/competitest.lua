@@ -17,7 +17,7 @@ return {
       vim.api.nvim_set_hl(0, "DiffChange", { fg = "#ffff00", bg = "#2f2f1a" })
       vim.api.nvim_set_hl(0, "DiffText",   { fg = "#ffffff", bg = "#3f3f1a" })
 
-      require("competitest").setup({
+      local base_config = {
         runner_ui = {
           interface = "popup",
           selector_show_nu = true,
@@ -32,10 +32,9 @@ return {
             { 5, { { 1, "si" }, { 1, "se" } } },
           },
         },
-        floating_border = "rounded",
+        floating_border           = "rounded",
         floating_border_highlight = "FloatBorder",
-        save_current_file = true,
-        testcases_directory = ".testcases",
+        save_current_file         = true,
         compile_command = {
           cpp = { exec = "g++", args = { "-std=c++17", "-O2", "-Wall", "-I/home/ekber/cpp_libs", "-DCOMP_TEST", "$(FNAME)", "-o", "$(FNOEXT)" } },
         },
@@ -47,7 +46,30 @@ return {
         output_compare_method = "squish",
         view_output_diff      = true,
         testcases_use_single_file = false,
+      }
+
+      -- İlk dəfə setup et
+      local fname = vim.fn.expand("%:t")
+      base_config.testcases_directory = ".testcases/" .. (fname ~= "" and fname or "default")
+      require("competitest").setup(base_config)
+
+      -- Hər .cpp faylı açıldığında testcases_directory-ni yenilə
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = "*.cpp",
+        callback = function()
+          local f = vim.fn.expand("%:t")
+          base_config.testcases_directory = ".testcases/" .. f
+          require("competitest").setup(base_config)
+        end,
       })
+
+      -- Bütün testcase-ləri sil
+      vim.api.nvim_create_user_command("DeleteAll", function()
+        local f = vim.fn.expand("%:t")
+        local dir = vim.fn.expand("%:p:h") .. "/.testcases/" .. f
+        vim.fn.system("rm -f " .. dir .. "/*.txt")
+        print("Deleted all testcases for: " .. f)
+      end, {})
     end,
   },
 }

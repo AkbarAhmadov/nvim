@@ -62,6 +62,8 @@ local triggers = {
   "call_line",
   "call_seg_int",
   "call_lct",
+  "call_pragmas",
+  "call_dsu",
 }
 
 local result = {}
