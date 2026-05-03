@@ -64,6 +64,7 @@ local triggers = {
   "call_lct",
   "call_pragmas",
   "call_dsu",
+  "call_impseglazy",
 }
 
 local result = {}
