@@ -65,6 +65,9 @@ local triggers = {
   "call_pragmas",
   "call_dsu",
   "call_impseglazy",
+  "call_merge_rn",
+  "call_segtreechmin",
+  "call_sparse",
 }
 
 local result = {}

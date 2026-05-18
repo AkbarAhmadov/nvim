@@ -3,10 +3,10 @@ struct SegTree{
     T null;
     int n;
     vector <T> t;
-    void init(int n1, T null1) {
+    void init(int n1) {
         n = n1;
-        null = null1;
-        t.assign(4*(n+2), null);          // TODO
+        null = 0;                         // TODO
+        t.assign(4*(n+2), null);
     }
     T merge(T a, T b) {
         T c;

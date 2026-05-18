@@ -2,16 +2,16 @@ struct SegTree{
     int null;
     int n;
     vector <int> t;
-    void init(int n1, int null1) {
+    void init(int n1) {
         n = n1;
-        null = null1;
-        t.assign(4*(n+2), null);          // intODO
+        null = 0;                       // TODO
+        t.assign(4*(n+2), null);
     }
     int merge(int a, int b) {
         int c;
         if (a == null) return b;
         if (b == null) return a;
-        c = min(a, b);                  // intODO
+        c = min(a, b);                  // TODO
         return c;
     }
     void build(int v, int tl, int tr, vector <int> &a) {
