@@ -68,6 +68,7 @@ local triggers = {
   "call_merge_rn",
   "call_segtreechmin",
   "call_sparse",
+  "call_flow",
 }
 
 local result = {}
