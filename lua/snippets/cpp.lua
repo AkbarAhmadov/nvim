@@ -69,6 +69,7 @@ local triggers = {
   "call_segtreechmin",
   "call_sparse",
   "call_flow",
+  "call_cd",
 }
 
 local result = {}
